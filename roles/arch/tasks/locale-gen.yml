@@ -1,4 +1,0 @@
----
-
-- copy: files/etc/locale.gen
-- shell: locale-gen

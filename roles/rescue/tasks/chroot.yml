@@ -5,7 +5,7 @@
   register: st
 - unarchive: src={{ arch_chroot_archive }} dest={{ arch_chroot_prefix }} copy=no
   when: not st.stat.exists
-- copy: src=roles/arch/files/etc/pacman.d/mirrorlist dest={{ arch_chroot }}/etc/pacman.d/mirrorlist
+- copy: src=etc/pacman.d/mirrorlist dest={{ arch_chroot }}/etc/pacman.d/mirrorlist
 - fetch: src=/etc/resolv.conf dest=/tmp/resolv.conf
   register: f
 - copy: src="{{ f.dest }}" dest={{ arch_chroot }}/etc

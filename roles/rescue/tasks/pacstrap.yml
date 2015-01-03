@@ -15,7 +15,7 @@
     - etc/netctl/eno2
 - shell: echo {{ hostname }} > {{ arch_root }}/etc/hostname
 - shell: chroot {{ arch_root }} ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
-- copy: src=roles/arch/files/etc/locale.gen dest={{ arch_root }}/etc/locale.gen
+- copy: src=etc/locale.gen dest={{ arch_root }}/etc/locale.gen
 - shell: chroot {{ arch_root }} locale-gen
 - shell: echo LANG=en_US.UTF-8 > {{ arch_root }}/etc/locale.conf
 - shell: chroot {{ arch_root }} mkinitcpio -p linux

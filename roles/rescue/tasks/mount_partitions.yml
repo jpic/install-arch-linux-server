@@ -11,6 +11,7 @@
     - sys
     - proc
     - run
+    - etc
 
 - mount: src=/dev/sda name={{ arch_root }}/{{ item }} opts='subvol={{ item }}' fstype=btrfs state=mounted
   with_items:
@@ -29,4 +30,4 @@
 - fetch: src=/etc/resolv.conf dest=/tmp/resolv.conf
   register: f
 
-- copy: src="{{ f.dest }}" dest={{ arch_root }}/etc
+- copy: src="{{ f.dest }}" dest={{ arch_root }}/etc/resolv.conf

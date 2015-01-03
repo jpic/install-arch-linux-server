@@ -1,0 +1,7 @@
+#!/bin/bash
+
+user=$1
+host=$2
+
+ssh-copy-id $user@$host
+ansible-playbook --ask-sudo-pass -i "$host," -e "hostname=${2%%.*}" rescue_reinstall_arch_linux.yml

@@ -23,13 +23,8 @@
 - stat: path={{ arch_root }}/boot/grub
   register: st
 
-- mount: src=/{{ item }} name={{ arch_root }}/{{ item }} fstype=bind state=mounted opts=rbind
+- include: _root_sys_mount.yml
   when: st.stat.exists
-  with_items:
-    - proc
-    - sys
-    - dev
-    - run
 
 - fetch: src=/etc/resolv.conf dest=/tmp/resolv.conf
   register: f

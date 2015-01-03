@@ -3,6 +3,8 @@
   register: st
 - shell: chroot {{ arch_chroot }} pacstrap /mnt base grub btrfs-progs openssh netctl python2 sudo
   when: not st.stat.exists
+# Ensure things are still mounted
+- include: _root_sys_mount.yml
 - shell: blkid -o export {{ btrfs_dev }} | grep ^UUID= | cut -b 6-
   register: blkid
 - file: path={{ arch_root }}/etc/conf.d state=directory

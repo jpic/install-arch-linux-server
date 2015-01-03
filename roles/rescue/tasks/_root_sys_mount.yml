@@ -1,0 +1,7 @@
+---
+- mount: src=/{{ item }} name={{ arch_root }}/{{ item }} fstype=bind state=mounted opts=rbind
+  with_items:
+    - proc
+    - sys
+    - dev
+    - run

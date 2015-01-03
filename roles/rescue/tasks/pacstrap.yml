@@ -11,8 +11,6 @@
     - etc/fstab
     - etc/mkinitcpio.conf
     - etc/default/grub
-    - etc/netctl/eno1
-    - etc/netctl/eno2
 - shell: echo {{ hostname }} > {{ arch_root }}/etc/hostname
 - shell: chroot {{ arch_root }} ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 - copy: src=etc/locale.gen dest={{ arch_root }}/etc/locale.gen

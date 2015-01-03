@@ -1,0 +1,3 @@
+---
+
+- file: src=etc/pacman.d/mirrorlist dest=/etc/pacman.d/mirrorlist

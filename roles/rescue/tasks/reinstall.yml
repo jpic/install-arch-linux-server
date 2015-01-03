@@ -1,0 +1,8 @@
+---
+
+- include: epdb.yml
+- include: partition.yml
+- include: chroot.yml
+- include: format_partitions.yml
+- include: mount_partitions.yml
+- include: pacstrap.yml

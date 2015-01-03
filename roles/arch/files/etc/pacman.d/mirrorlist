@@ -1,0 +1,3 @@
+Server = http://arch.yourlabs.org/$repo/os/$arch
+Server = http://mirror.archlinux.ikoula.com/archlinux/$repo/os/$arch
+Server = http://distrib-coffee.ipsl.jussieu.fr/pub/linux/archlinux/$repo/os/$arch

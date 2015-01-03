@@ -1,0 +1,6 @@
+---
+
+- apt: pkg={{ item }} update_cache=no
+  with_items:
+    - python-pip
+- pip: name=epdb

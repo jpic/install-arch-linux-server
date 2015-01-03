@@ -1,0 +1,6 @@
+---
+
+- apt: update_cache=yes
+- include: epdb.yml
+- include: chroot.yml
+- include: mount_partitions.yml

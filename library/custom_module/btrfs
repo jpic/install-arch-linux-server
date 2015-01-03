@@ -1,0 +1,25 @@
+#!/usr/bin/env python
+import os
+
+from ansible.module_utils.basic import *
+
+
+module = AnsibleModule(
+    argument_spec = dict(
+        state     = dict(default='created', choices=['created', 'mounted']),
+        name      = dict(required=True),
+        parent    = dict(required=True),
+    ),
+    supports_check_mode = True
+)
+
+r = os.popen('btrfs subvolume list %s' % module.params['parent']).read()
+
+if module.params['name'] in r:
+    module.exit_json(changed=False)
+else:
+    if not module.check_mode:
+        os.chdir(module.params['parent'])
+        os.popen('btrfs subvolume create %s' % module.params['name']).read()
+
+    module.exit_json(changed=True)

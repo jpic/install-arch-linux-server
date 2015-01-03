@@ -1,0 +1,32 @@
+---
+- mount: src={{ btrfs_dev }} name={{ arch_root }} opts='subvol=arch' fstype=btrfs state=mounted
+
+- file: path={{ arch_root }}/{{ item }} state=directory
+  with_items:
+    - root
+    - home
+    - var
+    - srv
+    - dev
+    - sys
+    - proc
+    - run
+
+- mount: src=/dev/sda name={{ arch_root }}/{{ item }} opts='subvol={{ item }}' fstype=btrfs state=mounted
+  with_items:
+    - root
+    - home
+    - var
+    - srv
+
+- mount: src=/{{ item }} name={{ arch_root }}/{{ item }} fstype=bind state=mounted opts=rbind
+  with_items:
+    - proc
+    - sys
+    - dev
+    - run
+
+- fetch: src=/etc/resolv.conf dest=/tmp/resolv.conf
+  register: f
+
+- copy: src="{{ f.dest }}" dest={{ arch_root }}/etc

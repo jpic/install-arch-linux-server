@@ -1,0 +1,6 @@
+---
+- apt: pkg={{ item }} update_cache=no
+  with_items:
+    - btrfs-tools
+    - gdisk
+

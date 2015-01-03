@@ -1,0 +1,31 @@
+---
+- stat: path={{ arch_root }}/boot/grub
+  register: st
+- shell: chroot {{ arch_chroot }} pacstrap /mnt base grub btrfs-progs openssh
+  when: not st.stat.exists
+- shell: blkid -o export {{ btrfs_dev }} | grep ^UUID= | cut -b 6-
+  register: blkid
+  tags: deb
+- file: path={{ arch_root }}/etc/conf.d state=directory
+  tags: deb
+- template: src={{ item }} dest={{ arch_root }}/{{ item }} mode=0700
+  with_items:
+    - etc/fstab
+    - etc/mkinitcpio.conf
+    - etc/default/grub
+    - etc/conf.d/network
+  tags: deb
+- shell: echo mia > {{ arch_root }}/etc/hostname
+- shell: chroot {{ arch_root }} ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
+- copy: src=roles/arch/files/etc/locale.gen dest={{ arch_root }}/etc/locale.gen
+- shell: chroot {{ arch_root }} locale-gen
+- shell: echo LANG=en_US.UTF-8 > {{ arch_root }}/etc/locale.conf
+- shell: chroot {{ arch_root }} mkinitcpio -p linux
+- shell: chroot {{ arch_root }} grub-mkconfig -o /boot/grub/grub.conf
+- shell: chroot {{ arch_root }} grub-install --recheck {{ btrfs_dev }}
+- shell: chroot {{ arch_root }} systemctl enable sshd
+  tags: deb
+- file: path={{ arch_root }}/root/.ssh state=directory mode=0600
+  tags: deb
+- copy: src=/home/jpic/.ssh/id_rsa.pub dest={{ arch_root }}/root/.ssh/authorized_keys mode=0600
+  tags: deb

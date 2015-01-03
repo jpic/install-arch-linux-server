@@ -1,0 +1,5 @@
+interface=eth0
+address={{ ansible_ssh_host }}
+netmask=24
+broadcast=62.210.69.255
+gateway=62.210.69.1

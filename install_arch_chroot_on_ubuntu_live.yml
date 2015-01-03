@@ -1,0 +1,9 @@
+---
+
+- hosts: container
+  sudo: yes
+
+  tasks:
+    - include_vars: roles/rescue/vars/main.yml
+      tags: deb
+    - include: roles/rescue/tasks/reinstall.yml

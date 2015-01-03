@@ -1,0 +1,8 @@
+arch: x86_64
+arch_chroot_url: http://arch.yourlabs.org/iso/2015.01.01/archlinux-bootstrap-2015.01.01-x86_64.tar.gz
+arch_chroot_archive: /tmp/arch.tgz
+arch_chroot_prefix: /tmp
+arch_chroot: '{{ arch_chroot_prefix }}/root.{{ arch }}'
+arch_root: '{{ arch_chroot }}/mnt'
+tmp_btrfs_root: /tmp/btrfs_root
+btrfs_dev: /dev/sda

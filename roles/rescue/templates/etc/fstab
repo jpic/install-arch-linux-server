@@ -1,0 +1,5 @@
+UUID={{ blkid.stdout|trim }}    /       btrfs       rw,noatime,space_cache,subvol=arch      0   0
+UUID={{ blkid.stdout|trim }}    /home   btrfs       rw,noatime,space_cache,subvol=home      0   0
+UUID={{ blkid.stdout|trim }}    /root   btrfs       rw,noatime,space_cache,subvol=root      0   0
+UUID={{ blkid.stdout|trim }}    /srv    btrfs       rw,noatime,space_cache,subvol=srv       0   0
+UUID={{ blkid.stdout|trim }}    /var    btrfs       rw,noatime,space_cache,subvol=var       0   0

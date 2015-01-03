@@ -1,0 +1,19 @@
+---
+
+- shell: swapoff -a
+
+- filesystem: fstype=btrfs dev={{ btrfs_dev }} opts='-f'
+
+- file: path={{ tmp_btrfs_root }} state=directory
+
+- mount: src={{ btrfs_dev }} name={{ tmp_btrfs_root }} fstype=btrfs state=mounted
+
+- btrfs: name={{ item }} parent={{ tmp_btrfs_root }} state=created
+  with_items:
+    - arch
+    - root
+    - home
+    - srv
+    - var
+
+- mount: src={{ btrfs_dev }} name={{ tmp_btrfs_root }} fstype=btrfs state=unmounted

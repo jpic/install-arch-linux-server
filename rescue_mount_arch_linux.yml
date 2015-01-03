@@ -5,5 +5,4 @@
 
   tasks:
     - include_vars: roles/rescue/vars/main.yml
-      tags: deb
-    - include: roles/rescue/tasks/reinstall.yml
+    - include: roles/rescue/tasks/mount_partitions.yml

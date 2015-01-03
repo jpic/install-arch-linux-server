@@ -1,0 +1,8 @@
+---
+
+- hosts: container
+  sudo: yes
+
+  tasks:
+    - include_vars: roles/rescue/vars/main.yml
+    - include: roles/rescue/tasks/chroot.yml

@@ -20,7 +20,11 @@
     - var
     - srv
 
+- stat: path={{ arch_root }}/boot/grub
+  register: st
+
 - mount: src=/{{ item }} name={{ arch_root }}/{{ item }} fstype=bind state=mounted opts=rbind
+  when: st.stat.exists
   with_items:
     - proc
     - sys

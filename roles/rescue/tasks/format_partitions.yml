@@ -2,6 +2,7 @@
 
 - shell: swapoff -a
 
+- shell: sgdisk /dev/sda --zap-all
 - shell: sgdisk /dev/sda -g
 
 - shell: mkfs.btrfs -f /dev/sda

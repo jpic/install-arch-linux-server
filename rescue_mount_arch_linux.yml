@@ -1,6 +1,6 @@
 ---
 
-- hosts: container
+- hosts: all
   sudo: yes
 
   tasks:

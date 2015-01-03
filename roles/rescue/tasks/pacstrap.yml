@@ -19,7 +19,7 @@
 - shell: chroot {{ arch_root }} locale-gen
 - shell: echo LANG=en_US.UTF-8 > {{ arch_root }}/etc/locale.conf
 - shell: chroot {{ arch_root }} mkinitcpio -p linux
-- shell: chroot {{ arch_root }} grub-mkconfig -o /boot/grub/grub.conf
+- shell: chroot {{ arch_root }} grub-mkconfig -o /boot/grub/grub.cfg
 - shell: chroot {{ arch_root }} grub-install --recheck {{ btrfs_dev }}
 - shell: chroot {{ arch_root }} systemctl enable sshd
 - template: src=etc/netctl/dhcp dest={{ arch_root }}/etc/netctl/{{ item }} mode=0700

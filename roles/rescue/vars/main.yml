@@ -6,3 +6,6 @@ arch_chroot: '{{ arch_chroot_prefix }}/root.{{ arch }}'
 arch_root: '{{ arch_chroot }}/mnt'
 tmp_btrfs_root: /tmp/btrfs_root
 btrfs_dev: /dev/sda
+ethernet_interfaces:
+  - eno0
+  - eno1

@@ -1,4 +1,4 @@
 Description='Basic connection'
-Interface=eno2
+Interface={{ item }}
 Connection=ethernet
 IP=dhcp

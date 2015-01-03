@@ -1,0 +1,4 @@
+Description='Basic connection'
+Interface=eno2
+Connection=ethernet
+IP=dhcp

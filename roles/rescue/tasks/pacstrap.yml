@@ -27,4 +27,4 @@
 - shell: chroot {{ arch_root }} netctl enable {{ item }}
   with_items: ethernet_interfaces
 - file: path={{ arch_root }}/root/.ssh state=directory mode=0600
-- copy: src=/home/jpic/.ssh/id_rsa.pub dest={{ arch_root }}/root/.ssh/authorized_keys mode=0600
+- copy: src=~/.ssh/id_rsa.pub dest={{ arch_root }}/root/.ssh/authorized_keys mode=0600

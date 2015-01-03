@@ -1,7 +1,7 @@
 ---
 - stat: path={{ arch_root }}/boot/grub
   register: st
-- shell: chroot {{ arch_chroot }} pacstrap /mnt base grub btrfs-progs openssh netctl
+- shell: chroot {{ arch_chroot }} pacstrap /mnt base grub btrfs-progs openssh netctl python2 sudo
   when: not st.stat.exists
 - shell: blkid -o export {{ btrfs_dev }} | grep ^UUID= | cut -b 6-
   register: blkid

@@ -2,7 +2,9 @@
 
 - shell: swapoff -a
 
-- filesystem: fstype=btrfs dev={{ btrfs_dev }} opts='-f'
+- shell: sgdisk /dev/sda -g
+
+- shell: mkfs.btrfs -f /dev/sda
 
 - file: path={{ tmp_btrfs_root }} state=directory
 

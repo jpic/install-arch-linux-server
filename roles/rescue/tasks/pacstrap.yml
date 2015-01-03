@@ -13,7 +13,7 @@
     - etc/default/grub
     - etc/netctl/eno1
     - etc/netctl/eno2
-- shell: echo mia > {{ arch_root }}/etc/hostname
+- shell: echo {{ hostname }} > {{ arch_root }}/etc/hostname
 - shell: chroot {{ arch_root }} ln -sf /usr/share/zoneinfo/Europe/Paris /etc/localtime
 - copy: src=roles/arch/files/etc/locale.gen dest={{ arch_root }}/etc/locale.gen
 - shell: chroot {{ arch_root }} locale-gen

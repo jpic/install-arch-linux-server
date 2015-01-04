@@ -9,7 +9,7 @@ Linux"](https://wiki.archlinux.org/index.php/Install_from_Existing_Linux)
 
 Format [`/dev/sda` to BtrFS Partionning](https://wiki.archlinux.org/index.php/partitioning#Btrfs_Partitioning) and install arch linux in subvolumes:
 
-    ansible-playbook -i "yourhostname," --ask-sudo-pass rescue_reinstall_arch_linux.yml
+    ansible-playbook -i "yourhostname," -e "hostname=your_host_name" --ask-sudo-pass rescue_reinstall_arch_linux.yml
 
 If you just want to debug your arch root on `/dev/sda` through Ubuntu Live,
 then this command will make it operationnal in /tmp/root.x86_64/mnt:
